@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: db-check-job
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  template:
+    spec:
+      containers:
+      - image: busybox:latest
+        name: db-check-job
+        command:
+          - 'sh'
+          - '-c'
+          - "echo $host; sleep 20"
+        envFrom:
+          - configMapRef:
+              name: db-config
+      restartPolicy: Never
