@@ -4,11 +4,14 @@ metadata:
   name: guestbook
   namespace: argocd
 spec:
-  project: default
+  project: team-finance
   source:
     repoURL: https://github.com/HelloRave/argocd-example-apps.git
     targetRevision: HEAD
     path: guestbook
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
+    namespace: guestbook
+  syncPolicy:
+    automated:
+      prune: true

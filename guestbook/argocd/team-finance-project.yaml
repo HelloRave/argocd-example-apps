@@ -1,0 +1,13 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: team-finance
+  namespace: argocd
+spec:
+  sourceRepos:
+    - 'https://github.com/HelloRave/argocd-example-apps.git'
+  destinations:
+    - namespace: guestbook
+      server: https://kubernetes.default.svc
+    
+  
